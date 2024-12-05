@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+    font-family: 'anatic sc, sans-serif';
+}
+
+.wrapper {
+    width: 85px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+}
+
+.checkbox {
+    top: 0;
+    right: 0;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out;
+}
+.checkbox .trace {
+    width: 50px;
+    height: 4px;
+    background-color: rgb(61, 61, 197);
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 16px;
+    
+    transform: rotate(0);
+}
+.checkbox .trace:nth-child(2) {
+    top: 26px;
+    transform: rotate(0);
+}
+.checkbox .trace:nth-child(3) {
+    top: 36px;
+    transform: rotate(0);
+}
+
+#toggle {
+    display: none;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: rgb(14, 14, 147);
+    top: 25px;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: rgb(14, 14, 147);
+    top: 26px;
+}
+
+.menu {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    background: transparent;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px rgb(61, 61, 197);
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-itens {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-itens ul {
+    list-style-type: none;
+}
+
+.menu-itens li a {
+    margin: 10px 0;
+    color: rgb(14, 14, 147);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+#toggle:checked .checkbox {
+    background-color: rgb(61, 61, 197);
+}
+#toggle:checked ~ .menu {
+    background-color: rgb(61, 61, 197);
+    box-shadow: 0px 0px 0px 100vmax rgb(61, 61, 197);
+    z-index: 1;
+}
+#toggle:checked ~ .menu-itens {
+    
+    visibility: visible;
+    opacity: 1;
+}
